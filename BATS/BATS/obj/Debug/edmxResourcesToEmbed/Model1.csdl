@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="user154_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="user154_dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="batsamplua" EntityType="user154_dbModel.batsamplua" />
+    <EntitySet Name="batslizenzia" EntityType="user154_dbModel.batslizenzia" />
+    <EntitySet Name="batsmatch" EntityType="user154_dbModel.batsmatch" />
+    <EntitySet Name="batspolzovatel" EntityType="user154_dbModel.batspolzovatel" />
+    <EntitySet Name="batsrol" EntityType="user154_dbModel.batsrol" />
+    <EntitySet Name="batssostavstatistika" EntityType="user154_dbModel.batssostavstatistika" />
+    <AssociationSet Name="FK_batspolzovatel_batsamplua" Association="user154_dbModel.FK_batspolzovatel_batsamplua">
+      <End Role="batsamplua" EntitySet="batsamplua" />
+      <End Role="batspolzovatel" EntitySet="batspolzovatel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_batspolzovatel_batslizenzia" Association="user154_dbModel.FK_batspolzovatel_batslizenzia">
+      <End Role="batslizenzia" EntitySet="batslizenzia" />
+      <End Role="batspolzovatel" EntitySet="batspolzovatel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_batssostavstatistika_batsmatch" Association="user154_dbModel.FK_batssostavstatistika_batsmatch">
+      <End Role="batsmatch" EntitySet="batsmatch" />
+      <End Role="batssostavstatistika" EntitySet="batssostavstatistika" />
+    </AssociationSet>
+    <AssociationSet Name="FK_batspolzovatel_batsrol" Association="user154_dbModel.FK_batspolzovatel_batsrol">
+      <End Role="batsrol" EntitySet="batsrol" />
+      <End Role="batspolzovatel" EntitySet="batspolzovatel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_batssostavstatistika_batspolzovatel" Association="user154_dbModel.FK_batssostavstatistika_batspolzovatel">
+      <End Role="batspolzovatel" EntitySet="batspolzovatel" />
+      <End Role="batssostavstatistika" EntitySet="batssostavstatistika" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="batsamplua">
+    <Key>
+      <PropertyRef Name="id_amplua" />
+    </Key>
+    <Property Name="id_amplua" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nazvanie" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="batspolzovatel" Relationship="user154_dbModel.FK_batspolzovatel_batsamplua" FromRole="batsamplua" ToRole="batspolzovatel" />
+  </EntityType>
+  <EntityType Name="batslizenzia">
+    <Key>
+      <PropertyRef Name="id_licenzii" />
+    </Key>
+    <Property Name="id_licenzii" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="batspolzovatel" Relationship="user154_dbModel.FK_batspolzovatel_batslizenzia" FromRole="batslizenzia" ToRole="batspolzovatel" />
+  </EntityType>
+  <EntityType Name="batsmatch">
+    <Key>
+      <PropertyRef Name="id_matcha" />
+    </Key>
+    <Property Name="id_matcha" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="data_provedenia" Type="DateTime" Precision="0" />
+    <Property Name="mesto_provedenia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nazvanie_turnira" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="protivnik" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="batssostavstatistika" Relationship="user154_dbModel.FK_batssostavstatistika_batsmatch" FromRole="batsmatch" ToRole="batssostavstatistika" />
+  </EntityType>
+  <EntityType Name="batspolzovatel">
+    <Key>
+      <PropertyRef Name="id_igroka" />
+    </Key>
+    <Property Name="id_igroka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_licenzii" Type="Int32" />
+    <Property Name="familia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ima" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="otchestvo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="data_rojdenia" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id_amplua" Type="Int32" />
+    <Property Name="igrovoi_nomer" Type="Int32" />
+    <Property Name="login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="parol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_roli" Type="Int32" />
+    <NavigationProperty Name="batsamplua" Relationship="user154_dbModel.FK_batspolzovatel_batsamplua" FromRole="batspolzovatel" ToRole="batsamplua" />
+    <NavigationProperty Name="batslizenzia" Relationship="user154_dbModel.FK_batspolzovatel_batslizenzia" FromRole="batspolzovatel" ToRole="batslizenzia" />
+    <NavigationProperty Name="batsrol" Relationship="user154_dbModel.FK_batspolzovatel_batsrol" FromRole="batspolzovatel" ToRole="batsrol" />
+    <NavigationProperty Name="batssostavstatistika" Relationship="user154_dbModel.FK_batssostavstatistika_batspolzovatel" FromRole="batspolzovatel" ToRole="batssostavstatistika" />
+  </EntityType>
+  <EntityType Name="batsrol">
+    <Key>
+      <PropertyRef Name="id_roli" />
+    </Key>
+    <Property Name="id_roli" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nazvanie" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="batspolzovatel" Relationship="user154_dbModel.FK_batspolzovatel_batsrol" FromRole="batsrol" ToRole="batspolzovatel" />
+  </EntityType>
+  <EntityType Name="batssostavstatistika">
+    <Key>
+      <PropertyRef Name="id_sostava_statistika" />
+    </Key>
+    <Property Name="id_sostava_statistika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_matcha" Type="Int32" Nullable="false" />
+    <Property Name="id_igroka" Type="Int32" Nullable="false" />
+    <Property Name="statistika_igroka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="goli" Type="Int32" />
+    <Property Name="peredachi" Type="Int32" />
+    <Property Name="jeltie_kartochki" Type="Int32" />
+    <Property Name="krasnie_kartochki" Type="Int32" />
+    <Property Name="komentarii" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="batsmatch" Relationship="user154_dbModel.FK_batssostavstatistika_batsmatch" FromRole="batssostavstatistika" ToRole="batsmatch" />
+    <NavigationProperty Name="batspolzovatel" Relationship="user154_dbModel.FK_batssostavstatistika_batspolzovatel" FromRole="batssostavstatistika" ToRole="batspolzovatel" />
+  </EntityType>
+  <Association Name="FK_batspolzovatel_batsamplua">
+    <End Type="user154_dbModel.batsamplua" Role="batsamplua" Multiplicity="0..1" />
+    <End Type="user154_dbModel.batspolzovatel" Role="batspolzovatel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batsamplua">
+        <PropertyRef Name="id_amplua" />
+      </Principal>
+      <Dependent Role="batspolzovatel">
+        <PropertyRef Name="id_amplua" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_batspolzovatel_batslizenzia">
+    <End Type="user154_dbModel.batslizenzia" Role="batslizenzia" Multiplicity="0..1" />
+    <End Type="user154_dbModel.batspolzovatel" Role="batspolzovatel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batslizenzia">
+        <PropertyRef Name="id_licenzii" />
+      </Principal>
+      <Dependent Role="batspolzovatel">
+        <PropertyRef Name="id_licenzii" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_batssostavstatistika_batsmatch">
+    <End Type="user154_dbModel.batsmatch" Role="batsmatch" Multiplicity="1" />
+    <End Type="user154_dbModel.batssostavstatistika" Role="batssostavstatistika" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batsmatch">
+        <PropertyRef Name="id_matcha" />
+      </Principal>
+      <Dependent Role="batssostavstatistika">
+        <PropertyRef Name="id_matcha" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_batspolzovatel_batsrol">
+    <End Type="user154_dbModel.batsrol" Role="batsrol" Multiplicity="0..1" />
+    <End Type="user154_dbModel.batspolzovatel" Role="batspolzovatel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batsrol">
+        <PropertyRef Name="id_roli" />
+      </Principal>
+      <Dependent Role="batspolzovatel">
+        <PropertyRef Name="id_roli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_batssostavstatistika_batspolzovatel">
+    <End Type="user154_dbModel.batspolzovatel" Role="batspolzovatel" Multiplicity="1" />
+    <End Type="user154_dbModel.batssostavstatistika" Role="batssostavstatistika" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batspolzovatel">
+        <PropertyRef Name="id_igroka" />
+      </Principal>
+      <Dependent Role="batssostavstatistika">
+        <PropertyRef Name="id_igroka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище user154_dbModelContainer" CdmEntityContainer="user154_dbEntities">
+    <EntitySetMapping Name="batsamplua">
+      <EntityTypeMapping TypeName="user154_dbModel.batsamplua">
+        <MappingFragment StoreEntitySet="batsamplua">
+          <ScalarProperty Name="nazvanie" ColumnName="nazvanie" />
+          <ScalarProperty Name="id_amplua" ColumnName="id_amplua" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="batslizenzia">
+      <EntityTypeMapping TypeName="user154_dbModel.batslizenzia">
+        <MappingFragment StoreEntitySet="batslizenzia">
+          <ScalarProperty Name="kategoria" ColumnName="kategoria" />
+          <ScalarProperty Name="id_licenzii" ColumnName="id_licenzii" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="batsmatch">
+      <EntityTypeMapping TypeName="user154_dbModel.batsmatch">
+        <MappingFragment StoreEntitySet="batsmatch">
+          <ScalarProperty Name="protivnik" ColumnName="protivnik" />
+          <ScalarProperty Name="nazvanie_turnira" ColumnName="nazvanie_turnira" />
+          <ScalarProperty Name="mesto_provedenia" ColumnName="mesto_provedenia" />
+          <ScalarProperty Name="data_provedenia" ColumnName="data_provedenia" />
+          <ScalarProperty Name="id_matcha" ColumnName="id_matcha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="batspolzovatel">
+      <EntityTypeMapping TypeName="user154_dbModel.batspolzovatel">
+        <MappingFragment StoreEntitySet="batspolzovatel">
+          <ScalarProperty Name="id_roli" ColumnName="id_roli" />
+          <ScalarProperty Name="parol" ColumnName="parol" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="igrovoi_nomer" ColumnName="igrovoi_nomer" />
+          <ScalarProperty Name="id_amplua" ColumnName="id_amplua" />
+          <ScalarProperty Name="data_rojdenia" ColumnName="data_rojdenia" />
+          <ScalarProperty Name="otchestvo" ColumnName="otchestvo" />
+          <ScalarProperty Name="ima" ColumnName="ima" />
+          <ScalarProperty Name="familia" ColumnName="familia" />
+          <ScalarProperty Name="id_licenzii" ColumnName="id_licenzii" />
+          <ScalarProperty Name="id_igroka" ColumnName="id_igroka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="batsrol">
+      <EntityTypeMapping TypeName="user154_dbModel.batsrol">
+        <MappingFragment StoreEntitySet="batsrol">
+          <ScalarProperty Name="nazvanie" ColumnName="nazvanie" />
+          <ScalarProperty Name="id_roli" ColumnName="id_roli" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="batssostavstatistika">
+      <EntityTypeMapping TypeName="user154_dbModel.batssostavstatistika">
+        <MappingFragment StoreEntitySet="batssostavstatistika">
+          <ScalarProperty Name="komentarii" ColumnName="komentarii" />
+          <ScalarProperty Name="krasnie_kartochki" ColumnName="krasnie_kartochki" />
+          <ScalarProperty Name="jeltie_kartochki" ColumnName="jeltie_kartochki" />
+          <ScalarProperty Name="peredachi" ColumnName="peredachi" />
+          <ScalarProperty Name="goli" ColumnName="goli" />
+          <ScalarProperty Name="statistika_igroka" ColumnName="statistika_igroka" />
+          <ScalarProperty Name="id_igroka" ColumnName="id_igroka" />
+          <ScalarProperty Name="id_matcha" ColumnName="id_matcha" />
+          <ScalarProperty Name="id_sostava_statistika" ColumnName="id_sostava_statistika" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

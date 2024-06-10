@@ -1,0 +1,23 @@
+﻿<Window x:Class="BATS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BATS"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="500" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" MouseDown="Window_MouseDown">
+    <Grid Background="#FF009244">
+        <Image HorizontalAlignment="Left" Height="503" Margin="-129,-3,0,0" VerticalAlignment="Top" Width="1565" Source="/Images/bg.png"/>
+        <Rectangle HorizontalAlignment="Center" Height="82" Margin="0,-3,0,0" Stroke="#FF353535" VerticalAlignment="Top" Width="450" Fill="#FFFFA800"/>
+        <Rectangle HorizontalAlignment="Center" Height="353" Margin="0,115,0,0" Stroke="#FFFFA800" VerticalAlignment="Top" Width="338" Fill="#7F000000"/>
+        <Label Content="Авторизация" FontSize="50" HorizontalAlignment="Center" Margin="0,-3,0,421" Width="338" FontWeight="Bold" Foreground="White"/>
+        <TextBox x:Name="LoginTxt" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Margin="0,172,0,0" FontSize="28" Foreground="White" PreviewTextInput="Txt2_PreviewTextInput" BorderBrush="#FFFFA901" Background="Black"/>
+        <PasswordBox x:Name="ParolTxt" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" Margin="0,263,0,0" FontSize="28" Foreground="White" PreviewTextInput="Txt2_PreviewTextInput" BorderBrush="#FFFFA802" Background="Black"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="115,216,0,0" VerticalAlignment="Top" FontSize="24" Foreground="White"/>
+        <Label Content="Логин" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="115,125,0,0" FontSize="24" Foreground="White"/>
+        <Button x:Name="Vhod" Content="Авторизоваться" HorizontalAlignment="Center" Margin="0,343,0,0" VerticalAlignment="Top" Width="220" Height="40" FontSize="18" BorderBrush="Black" Foreground="White" Click="Vhod_Click" Background="#FFFFAA02"/>
+        <Button  x:Name="Vihod" Content="Выйти из приложения" HorizontalAlignment="Center" Margin="0,406,0,0" VerticalAlignment="Top" Width="220" Height="40" FontSize="18" BorderBrush="#FFFFA900" Foreground="White" Click="Vihod_Click" Background="Black"/>
+
+
+    </Grid>
+</Window>

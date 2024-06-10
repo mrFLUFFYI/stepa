@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BATS", "BATS\BATS.csproj", "{859BD113-50CA-4D28-87B5-1F0106D3452E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{859BD113-50CA-4D28-87B5-1F0106D3452E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859BD113-50CA-4D28-87B5-1F0106D3452E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859BD113-50CA-4D28-87B5-1F0106D3452E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859BD113-50CA-4D28-87B5-1F0106D3452E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55B3F885-C2E9-4CE0-B979-B4B519BDB0D6}
+	EndGlobalSection
+EndGlobal

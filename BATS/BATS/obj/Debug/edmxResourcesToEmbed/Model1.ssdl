@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище user154_dbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="batsamplua">
+    <Key>
+      <PropertyRef Name="id_amplua" />
+    </Key>
+    <Property Name="id_amplua" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazvanie" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="batslizenzia">
+    <Key>
+      <PropertyRef Name="id_licenzii" />
+    </Key>
+    <Property Name="id_licenzii" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategoria" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="batsmatch">
+    <Key>
+      <PropertyRef Name="id_matcha" />
+    </Key>
+    <Property Name="id_matcha" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="data_provedenia" Type="date" />
+    <Property Name="mesto_provedenia" Type="varchar" MaxLength="100" />
+    <Property Name="nazvanie_turnira" Type="varchar" MaxLength="100" />
+    <Property Name="protivnik" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="batspolzovatel">
+    <Key>
+      <PropertyRef Name="id_igroka" />
+    </Key>
+    <Property Name="id_igroka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_licenzii" Type="int" />
+    <Property Name="familia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ima" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="otchestvo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="data_rojdenia" Type="date" Nullable="false" />
+    <Property Name="id_amplua" Type="int" />
+    <Property Name="igrovoi_nomer" Type="int" />
+    <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="parol" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_roli" Type="int" />
+  </EntityType>
+  <EntityType Name="batsrol">
+    <Key>
+      <PropertyRef Name="id_roli" />
+    </Key>
+    <Property Name="id_roli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazvanie" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="batssostavstatistika">
+    <Key>
+      <PropertyRef Name="id_sostava_statistika" />
+    </Key>
+    <Property Name="id_sostava_statistika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_matcha" Type="int" Nullable="false" />
+    <Property Name="id_igroka" Type="int" Nullable="false" />
+    <Property Name="statistika_igroka" Type="varchar" MaxLength="50" />
+    <Property Name="goli" Type="int" />
+    <Property Name="peredachi" Type="int" />
+    <Property Name="jeltie_kartochki" Type="int" />
+    <Property Name="krasnie_kartochki" Type="int" />
+    <Property Name="komentarii" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_batspolzovatel_batsamplua">
+    <End Role="batsamplua" Type="Self.batsamplua" Multiplicity="0..1" />
+    <End Role="batspolzovatel" Type="Self.batspolzovatel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batsamplua">
+        <PropertyRef Name="id_amplua" />
+      </Principal>
+      <Dependent Role="batspolzovatel">
+        <PropertyRef Name="id_amplua" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_batspolzovatel_batslizenzia">
+    <End Role="batslizenzia" Type="Self.batslizenzia" Multiplicity="0..1" />
+    <End Role="batspolzovatel" Type="Self.batspolzovatel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batslizenzia">
+        <PropertyRef Name="id_licenzii" />
+      </Principal>
+      <Dependent Role="batspolzovatel">
+        <PropertyRef Name="id_licenzii" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_batspolzovatel_batsrol">
+    <End Role="batsrol" Type="Self.batsrol" Multiplicity="0..1" />
+    <End Role="batspolzovatel" Type="Self.batspolzovatel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batsrol">
+        <PropertyRef Name="id_roli" />
+      </Principal>
+      <Dependent Role="batspolzovatel">
+        <PropertyRef Name="id_roli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_batssostavstatistika_batsmatch">
+    <End Role="batsmatch" Type="Self.batsmatch" Multiplicity="1" />
+    <End Role="batssostavstatistika" Type="Self.batssostavstatistika" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batsmatch">
+        <PropertyRef Name="id_matcha" />
+      </Principal>
+      <Dependent Role="batssostavstatistika">
+        <PropertyRef Name="id_matcha" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_batssostavstatistika_batspolzovatel">
+    <End Role="batspolzovatel" Type="Self.batspolzovatel" Multiplicity="1" />
+    <End Role="batssostavstatistika" Type="Self.batssostavstatistika" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batspolzovatel">
+        <PropertyRef Name="id_igroka" />
+      </Principal>
+      <Dependent Role="batssostavstatistika">
+        <PropertyRef Name="id_igroka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище user154_dbModelContainer">
+    <EntitySet Name="batsamplua" EntityType="Self.batsamplua" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="batslizenzia" EntityType="Self.batslizenzia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="batsmatch" EntityType="Self.batsmatch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="batspolzovatel" EntityType="Self.batspolzovatel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="batsrol" EntityType="Self.batsrol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="batssostavstatistika" EntityType="Self.batssostavstatistika" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_batspolzovatel_batsamplua" Association="Self.FK_batspolzovatel_batsamplua">
+      <End Role="batsamplua" EntitySet="batsamplua" />
+      <End Role="batspolzovatel" EntitySet="batspolzovatel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_batspolzovatel_batslizenzia" Association="Self.FK_batspolzovatel_batslizenzia">
+      <End Role="batslizenzia" EntitySet="batslizenzia" />
+      <End Role="batspolzovatel" EntitySet="batspolzovatel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_batspolzovatel_batsrol" Association="Self.FK_batspolzovatel_batsrol">
+      <End Role="batsrol" EntitySet="batsrol" />
+      <End Role="batspolzovatel" EntitySet="batspolzovatel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_batssostavstatistika_batsmatch" Association="Self.FK_batssostavstatistika_batsmatch">
+      <End Role="batsmatch" EntitySet="batsmatch" />
+      <End Role="batssostavstatistika" EntitySet="batssostavstatistika" />
+    </AssociationSet>
+    <AssociationSet Name="FK_batssostavstatistika_batspolzovatel" Association="Self.FK_batssostavstatistika_batspolzovatel">
+      <End Role="batspolzovatel" EntitySet="batspolzovatel" />
+      <End Role="batssostavstatistika" EntitySet="batssostavstatistika" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

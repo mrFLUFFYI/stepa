@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9f9402a2608f4e14ad3ef6fb55665ae9" Name="Diagram1">
+        <EntityTypeShape EntityType="user154_dbModel.batsamplua" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="user154_dbModel.batslizenzia" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="user154_dbModel.batsmatch" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="user154_dbModel.batspolzovatel" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="user154_dbModel.batsrol" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="user154_dbModel.batssostavstatistika" Width="1.5" PointX="5.25" PointY="2.75" />
+        <AssociationConnector Association="user154_dbModel.FK_batspolzovatel_batsamplua" />
+        <AssociationConnector Association="user154_dbModel.FK_batspolzovatel_batslizenzia" />
+        <AssociationConnector Association="user154_dbModel.FK_batssostavstatistika_batsmatch" />
+        <AssociationConnector Association="user154_dbModel.FK_batspolzovatel_batsrol" />
+        <AssociationConnector Association="user154_dbModel.FK_batssostavstatistika_batspolzovatel" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

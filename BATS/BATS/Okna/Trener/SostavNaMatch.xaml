@@ -1,0 +1,78 @@
+﻿<Window x:Class="BATS.SostavNaMatch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BATS"
+        mc:Ignorable="d"
+        Title="SostavNaMatch" Height="600" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" MouseDown="Window_MouseDown">
+    <Window.Resources>
+        <Style x:Key="ComboBoxTest2" TargetType="{x:Type ComboBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" >
+                                <ToggleButton.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="5*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border x:Name="Border"  Grid.ColumnSpan="2" Background="Black" BorderBrush="#FFFFA800" BorderThickness="1" />
+                                            <Border Grid.Column="0" Margin="1" Background="Black" BorderBrush="Black" BorderThickness="0,0,1,0" />
+                                            <Path x:Name="Arrow" Grid.Column="1"  Fill="#FFFFA800" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                                                <Setter TargetName="Border" Property="Background" Value="#FFFFA800" />
+                                            </Trigger>
+                                            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                                                <Setter TargetName="Border" Property="Background" Value="black" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3"  />
+                            <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                            <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True"  Focusable="False" PopupAnimation="Slide">
+                                <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder" Background="Black" />
+                                    <ScrollViewer SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF009244">
+        <Image HorizontalAlignment="Left" Height="603" Margin="-129,-3,0,0" VerticalAlignment="Top" Width="1857" Source="/Images/bg.png"/>
+        <Rectangle HorizontalAlignment="Center" Height="506" Margin="0,84,0,0" Stroke="#FFFFA800" VerticalAlignment="Top" Width="780" Fill="#7F000000"/>
+        <Rectangle HorizontalAlignment="Center" Height="82" Margin="0,-3,0,0" Stroke="#FF353535" VerticalAlignment="Top" Width="800" Fill="#FFFFA800"/>
+        <Image HorizontalAlignment="Left" Height="67" Margin="10,4,0,0" VerticalAlignment="Top" Width="55" Source="/Images/logoWhite.png"/>
+        <Button x:Name="Vihod" Content="Назад -&gt;" HorizontalAlignment="Left" Margin="665,22,0,0" VerticalAlignment="Top" Width="125" Height="32" FontSize="18" Click="Vihod_Click" BorderBrush="#FFFFA800" Background="Black" Foreground="White"/>
+        <Image Source="/Images/pole.png" Margin="85,106,85,102"/>
+
+        <Button x:Name="dobav" Content="Сохранить состав" HorizontalAlignment="Left" Margin="586,543,0,0" VerticalAlignment="Top" Width="176" FontSize="18" Click="dobav_Click" Background="#FFFFA800" BorderBrush="Black" Foreground="White" Height="32"/>
+        <ComboBox x:Name="TurnirTxt" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="176" Margin="44,543,0,0" FontSize="18" Foreground="White" Height="32" Style="{StaticResource ComboBoxTest2}" SelectionChanged="TurnirTxt_SelectionChanged"/>
+        <Label Content="Турнир:" HorizontalAlignment="Left" Margin="44,500,0,0" VerticalAlignment="Top" FontSize="24" Background="{x:Null}" Foreground="White" Width="176" HorizontalContentAlignment="Center"/>
+        <Label Content="Состав на матч" HorizontalAlignment="Center" Margin="0,-3,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" Background="{x:Null}" Foreground="White"/>
+        <ComboBox x:Name="VratarTxt" HorizontalAlignment="Center" VerticalAlignment="Top"  Width="150" Margin="0,415,0,0" FontSize="14" Foreground="White" Height="24" Style="{StaticResource ComboBoxTest2}"/>
+        <ComboBox x:Name="ZashitnikLTxt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="136,326,0,0" FontSize="14" Foreground="White" Height="24" Style="{StaticResource ComboBoxTest2}" SelectionChanged="ZashitnikLTxt_SelectionChanged"/>
+        <ComboBox x:Name="ZashitnikRTxt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="521,326,0,0" FontSize="14" Foreground="White" Height="24" Style="{StaticResource ComboBoxTest2}" SelectionChanged="ZashitnikRTxt_SelectionChanged"/>
+        <ComboBox x:Name="NapLTxt" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="150" Margin="196,133,0,0" FontSize="14" Foreground="White" Height="24" Style="{StaticResource ComboBoxTest2}" RenderTransformOrigin="0.44,0.583" SelectionChanged="NapLTxt_SelectionChanged"/>
+        <ComboBox x:Name="NapRTxt" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="150" Margin="463,133,0,0" FontSize="14" Foreground="White" Height="24" Style="{StaticResource ComboBoxTest2}" SelectionChanged="NapRTxt_SelectionChanged"/>
+        <ComboBox x:Name="ProtivnikTxt" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="176" Margin="224,543,0,0" FontSize="18" Foreground="White" Height="32" Style="{StaticResource ComboBoxTest2}" SelectionChanged="ProtivnikTxt_SelectionChanged"/>
+        <Label Content="Противник:" HorizontalAlignment="Left" Margin="224,501,0,0" VerticalAlignment="Top" FontSize="24" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Center" Width="176"/>
+        <ComboBox x:Name="DataTxt" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="176" Margin="405,543,0,0" FontSize="18" Foreground="White" Height="32" Style="{StaticResource ComboBoxTest2}"/>
+        <Label Content="Дата:" HorizontalAlignment="Left" Margin="405,500,0,0" VerticalAlignment="Top" FontSize="24" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Center" Width="176"/>
+    </Grid>
+</Window>
